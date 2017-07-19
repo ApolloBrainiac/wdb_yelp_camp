@@ -12,6 +12,7 @@ router.get("/", function(req, res){
 router.get("/register", function(req,res){
   res.render("register", {page: "register"});
 });
+
 // handle sign up logic
 router.post("/register", function(req, res){
   var newUser = new User({username: req.body.username});
@@ -30,6 +31,7 @@ router.post("/register", function(req, res){
 router.get("/login", function(req,res){
   res.render("login", {page: "login"});
 });
+
 // handling login logic
 router.post("/login", passport.authenticate("local",
   {
