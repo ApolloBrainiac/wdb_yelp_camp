@@ -28,6 +28,8 @@ app.use(methodOverride("_method"));
 app.use(flash());
 // seedDB(); Seed the DB
 
+app.locals.moment = require("moment");
+
 // PASSPORT CONFIGURATION
 app.use(require("express-session")({
   secret: "Colt defnitely has a dog fetish!",
