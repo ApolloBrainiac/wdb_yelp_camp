@@ -6,13 +6,12 @@ var express = require("express"),
 // INDEX -- SHOW ALL CAMPGROUNDS
 
 router.get("/", function(req, res){
-      console.log(req.user);
       // Get all campgrounds from DB
       Campground.find({}, function(err, allCampgrounds){
         if(err){
           console.log(err);
         } else {
-         res.render("campgrounds/index", {campgrounds:allCampgrounds});
+         res.render("campgrounds/index", {campgrounds:allCampgrounds, page: 'campgrounds;'});
         }
       });
 });
