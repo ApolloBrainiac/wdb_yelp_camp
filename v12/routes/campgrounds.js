@@ -36,10 +36,11 @@ router.post("/", middleware.isLoggedIn, function(req, res){
     // Create a new campground and save to DB
     Campground.create(newCampground, function(err, newlyCreated){
         if(err){
-            console.log(err);
+            req.flash("error", err.message);
+            req.redirect("back");
         } else {
             //redirect back to campgrounds page
-            console.log(newlyCreated);
+            req.flash("success","Successfully Created!");
             res.redirect("/campgrounds");
         }
     });
@@ -107,7 +108,7 @@ router.delete("/:id", middleware.checkCampgroundOwnership, function(req,res){
       req.flash("error", err);
       res.redirect("/campgrounds");
     } else {
-      req.flash("success", "Campground eradicated.")
+      req.flash("success", "Campground eradicated.");
       res.redirect("/campgrounds");
     }
   });
